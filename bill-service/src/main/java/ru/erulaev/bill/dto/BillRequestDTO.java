@@ -14,9 +14,9 @@ public class BillRequestDTO {
 
     private BigDecimal amount;
 
-    private boolean isDefault;
+    private boolean defaulted;
 
     private OffsetDateTime creationDate;
 
-    private boolean overDraftEnabled;
+    private boolean overdraftEnabled;
 }

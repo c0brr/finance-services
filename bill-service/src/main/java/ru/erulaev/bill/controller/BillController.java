@@ -20,13 +20,13 @@ public class BillController {
     @PostMapping("/")
     public Long create(@RequestBody BillRequestDTO billRequestDTO) {
         return bIllService.create(billRequestDTO.getAccountId(), billRequestDTO.getAmount(),
-                billRequestDTO.isDefault(), billRequestDTO.isOverDraftEnabled());
+                billRequestDTO.isDefaulted(), billRequestDTO.isOverdraftEnabled());
     }
 
     @PutMapping("/{id}")
     public BillResponseDTO update(@PathVariable long id, @RequestBody BillRequestDTO billRequestDTO) {
         return new BillResponseDTO(bIllService.update(id, billRequestDTO.getAccountId(), billRequestDTO.getAmount(),
-                billRequestDTO.isDefault(), billRequestDTO.isOverDraftEnabled()));
+                billRequestDTO.isDefaulted(), billRequestDTO.isOverdraftEnabled()));
     }
 
     @DeleteMapping("/{id}")

@@ -17,18 +17,18 @@ public class BillResponseDTO {
 
     private BigDecimal amount;
 
-    private boolean isDefault;
+    private boolean defaulted;
 
     private OffsetDateTime creationDate;
 
-    private boolean overDraftEnabled;
+    private boolean overdraftEnabled;
 
     public BillResponseDTO(Bill bill) {
         id = bill.getId();
         accountId = bill.getAccountId();
         amount = bill.getAmount();
-        isDefault = bill.isDefault();
+        defaulted = bill.isDefaulted();
         creationDate = bill.getCreationDate();
-        overDraftEnabled = bill.isOverDraftEnabled();
+        overdraftEnabled = bill.isOverdraftEnabled();
     }
 }

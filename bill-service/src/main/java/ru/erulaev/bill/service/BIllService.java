@@ -21,13 +21,13 @@ public class BIllService {
                 .orElseThrow(() -> new NotFoundException("Unable to find bill with id: " + id));
     }
 
-    public Long create(long accountId, BigDecimal amount, boolean isDefault, boolean overDraftEnabled) {
-        Bill bill = new Bill(accountId, amount, isDefault, OffsetDateTime.now(), overDraftEnabled);
+    public Long create(long accountId, BigDecimal amount, boolean defaulted, boolean overdraftEnabled) {
+        Bill bill = new Bill(accountId, amount, defaulted, OffsetDateTime.now(), overdraftEnabled);
         return billRepository.save(bill).getId();
     }
 
-    public Bill update(long id, long accountId, BigDecimal amount, boolean isDefault, boolean overDraftEnabled) {
-        Bill bill = new Bill(accountId, amount, isDefault, OffsetDateTime.now(), overDraftEnabled);
+    public Bill update(long id, long accountId, BigDecimal amount, boolean defaulted, boolean overdraftEnabled) {
+        Bill bill = new Bill(accountId, amount, defaulted, OffsetDateTime.now(), overdraftEnabled);
         bill.setId(id);
         return billRepository.save(bill);
     }
