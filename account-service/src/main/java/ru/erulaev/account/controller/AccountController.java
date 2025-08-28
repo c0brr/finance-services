@@ -13,11 +13,11 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping("/{id}")
-    public AccountResponseDTO getAccount(@PathVariable long id) {
-        return new AccountResponseDTO(accountService.getAccount(id));
+    public AccountResponseDTO get(@PathVariable long id) {
+        return new AccountResponseDTO(accountService.get(id));
     }
 
-    @PostMapping
+    @PostMapping("/")
     public Long create(@RequestBody AccountRequestDTO accountRequestDTO) {
         return accountService.create(accountRequestDTO.getName(),
                 accountRequestDTO.getEmail(),

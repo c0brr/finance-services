@@ -15,9 +15,9 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
 
-    public Account getAccount(long id) {
-       return accountRepository.findById(id)
-               .orElseThrow(() -> new NotFoundException("Unable to find account with id" + id));
+    public Account get(long id) {
+        return accountRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Unable to find account with id: " + id));
     }
 
     public Long create(String name, String email, String phone, List<Long> bills) {
@@ -36,7 +36,7 @@ public class AccountService {
     }
 
     public Account delete(long id) {
-        Account deletedAccount = getAccount(id);
+        Account deletedAccount = get(id);
         accountRepository.deleteById(id);
         return deletedAccount;
     }
