@@ -1,13 +1,14 @@
-package ru.erulaev.bill.dto;
+package ru.erulaev.deposit.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import ru.erulaev.bill.entity.Bill;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class BillResponseDTO {
 
@@ -22,15 +23,6 @@ public class BillResponseDTO {
     private OffsetDateTime creationDate;
 
     private boolean overdraftEnabled;
-
-    public BillResponseDTO(Bill bill) {
-        id = bill.getId();
-        accountId = bill.getAccountId();
-        amount = bill.getAmount();
-        isDefault = bill.isDefault();
-        creationDate = bill.getCreationDate();
-        overdraftEnabled = bill.isOverdraftEnabled();
-    }
 
     public boolean getIsDefault() {
         return isDefault;

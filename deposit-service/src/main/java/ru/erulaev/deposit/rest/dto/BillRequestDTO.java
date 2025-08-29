@@ -1,11 +1,13 @@
-package ru.erulaev.bill.dto;
+package ru.erulaev.deposit.rest.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Getter
+@Setter
 public class BillRequestDTO {
 
     private Long id;

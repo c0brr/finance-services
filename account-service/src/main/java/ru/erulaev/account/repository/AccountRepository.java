@@ -5,5 +5,4 @@ import ru.erulaev.account.entity.Account;
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
-
 }

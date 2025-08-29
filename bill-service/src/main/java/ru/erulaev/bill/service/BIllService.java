@@ -9,6 +9,7 @@ import ru.erulaev.bill.repository.BillRepository;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -21,13 +22,13 @@ public class BIllService {
                 .orElseThrow(() -> new NotFoundException("Unable to find bill with id: " + id));
     }
 
-    public Long create(long accountId, BigDecimal amount, boolean defaulted, boolean overdraftEnabled) {
-        Bill bill = new Bill(accountId, amount, defaulted, OffsetDateTime.now(), overdraftEnabled);
+    public Long create(long accountId, BigDecimal amount, boolean isDefault, boolean overdraftEnabled) {
+        Bill bill = new Bill(accountId, amount, isDefault, OffsetDateTime.now(), overdraftEnabled);
         return billRepository.save(bill).getId();
     }
 
-    public Bill update(long id, long accountId, BigDecimal amount, boolean defaulted, boolean overdraftEnabled) {
-        Bill bill = new Bill(accountId, amount, defaulted, OffsetDateTime.now(), overdraftEnabled);
+    public Bill update(long id, long accountId, BigDecimal amount, boolean isDefault, boolean overdraftEnabled) {
+        Bill bill = new Bill(accountId, amount, isDefault, OffsetDateTime.now(), overdraftEnabled);
         bill.setId(id);
         return billRepository.save(bill);
     }
@@ -36,5 +37,9 @@ public class BIllService {
         Bill deletedBill = get(id);
         billRepository.deleteById(id);
         return deletedBill;
+    }
+
+    public List<Bill> getBillsByAccountId(long accountId) {
+        return billRepository.getBillsByAccountId(accountId);
     }
 }

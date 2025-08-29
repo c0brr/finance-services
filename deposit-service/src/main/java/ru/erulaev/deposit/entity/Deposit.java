@@ -1,4 +1,4 @@
-package ru.erulaev.bill.entity;
+package ru.erulaev.deposit.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,28 +17,24 @@ import java.time.OffsetDateTime;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Bill {
+public class Deposit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long accountId;
+    private Long billId;
 
     private BigDecimal amount;
 
-    private boolean isDefault;
+    private String email;
 
     private OffsetDateTime creationDate;
 
-    private boolean overdraftEnabled;
-
-    public Bill(long accountId, BigDecimal amount, boolean isDefault,
-                OffsetDateTime creationDate, boolean overdraftEnabled) {
-        this.accountId = accountId;
+    public Deposit(Long billId, BigDecimal amount, String email, OffsetDateTime creationDate) {
+        this.billId = billId;
         this.amount = amount;
-        this.isDefault = isDefault;
+        this.email = email;
         this.creationDate = creationDate;
-        this.overdraftEnabled = overdraftEnabled;
     }
 }

@@ -6,6 +6,9 @@ import ru.erulaev.bill.dto.BillRequestDTO;
 import ru.erulaev.bill.dto.BillResponseDTO;
 import ru.erulaev.bill.service.BIllService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @AllArgsConstructor
 public class BillController {
@@ -20,17 +23,24 @@ public class BillController {
     @PostMapping("/")
     public Long create(@RequestBody BillRequestDTO billRequestDTO) {
         return bIllService.create(billRequestDTO.getAccountId(), billRequestDTO.getAmount(),
-                billRequestDTO.isDefaulted(), billRequestDTO.isOverdraftEnabled());
+                billRequestDTO.isDefault(), billRequestDTO.isOverdraftEnabled());
     }
 
     @PutMapping("/{id}")
     public BillResponseDTO update(@PathVariable long id, @RequestBody BillRequestDTO billRequestDTO) {
         return new BillResponseDTO(bIllService.update(id, billRequestDTO.getAccountId(), billRequestDTO.getAmount(),
-                billRequestDTO.isDefaulted(), billRequestDTO.isOverdraftEnabled()));
+                billRequestDTO.isDefault(), billRequestDTO.isOverdraftEnabled()));
     }
 
     @DeleteMapping("/{id}")
     public BillResponseDTO delete(@PathVariable long id) {
         return new BillResponseDTO(bIllService.delete(id));
+    }
+
+    @GetMapping("/account/{accountId}")
+    public List<BillResponseDTO> getBillsByAccountId(@PathVariable long accountId) {
+        return bIllService.getBillsByAccountId(accountId).stream()
+                .map(BillResponseDTO::new)
+                .collect(Collectors.toList());
     }
 }

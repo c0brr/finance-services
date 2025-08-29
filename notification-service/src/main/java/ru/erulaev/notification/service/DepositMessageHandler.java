@@ -27,8 +27,6 @@ public class DepositMessageHandler {
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(depositResponseDTO.getEmail());
-        mailMessage.setFrom("mail@mail.mail");
-
         mailMessage.setSubject("Deposit");
         mailMessage.setText("Make deposit, sum: " + depositResponseDTO.getAmount());
 

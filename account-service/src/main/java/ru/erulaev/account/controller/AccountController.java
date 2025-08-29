@@ -26,7 +26,7 @@ public class AccountController {
     }
 
     @PutMapping("/{id}")
-    public AccountResponseDTO update(@RequestBody AccountRequestDTO accountRequestDTO, @PathVariable long id) {
+    public AccountResponseDTO update(@PathVariable long id, @RequestBody AccountRequestDTO accountRequestDTO) {
         return new AccountResponseDTO(accountService.update(id, accountRequestDTO.getName(),
                 accountRequestDTO.getEmail(),
                 accountRequestDTO.getPhone(),
