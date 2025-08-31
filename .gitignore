@@ -9,5 +9,3 @@ build/
 *.iws
 *.iml
 *.ipr
-
-notification-service/src/main/resources/mail.properties
